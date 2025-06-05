@@ -1,0 +1,22 @@
+<div class="info-adicional-container">
+  <div class="info-card">
+    <h2>Información Adicional</h2>
+    <form [formGroup]="form">
+      <div class="form-group">
+        <!-- Tus campos aquí -->
+        <ion-input formControlName="nombre" placeholder="Nombre"></ion-input>
+        <ion-input formControlName="apellido" placeholder="Apellido"></ion-input>
+        <ion-select formControlName="nivel" placeholder="Nivel">
+          <ion-select-option value="1">Nivel 1</ion-select-option>
+          <ion-select-option value="2">Nivel 2</ion-select-option>
+        </ion-select>
+        <ion-input formControlName="fechaNacimiento" type="date" placeholder="Fecha de nacimiento"></ion-input>
+      </div>
+      <div class="action-buttons">
+        <ion-button type="button" (click)="limpiar()">Limpiar</ion-button>
+        <ion-button type="button" (click)="mostrar()">Mostrar</ion-button>
+        <ion-button type="button" (click)="irAHome()">Ir a Home</ion-button>
+      </div>
+    </form>
+  </div>
+</div>

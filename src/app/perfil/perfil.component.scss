@@ -1,0 +1,36 @@
+.perfil-bg {
+  --background: url('/assets/perfil-bg.jpg') center/cover no-repeat fixed;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.perfil-card {
+  background: rgba(30, 0, 46, 0.93);
+  border-radius: 22px;
+  max-width: 370px;
+  margin: 48px auto;
+  padding: 32px 24px 20px 24px;
+  box-shadow: 0 4px 18px #43008988;
+  color: #ffe066;
+  text-align: center;
+}
+
+.avatar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 18px;
+}
+ion-avatar {
+  width: 92px;
+  height: 92px;
+  margin-bottom: 10px;
+  border: 3px solid #ffe066;
+  box-shadow: 0 0 8px 2px #430089cc;
+}
+
+.perfil-actions ion-button {
+  margin-top: 20px;
+}

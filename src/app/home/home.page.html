@@ -1,20 +1,46 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+<div class="home-bg"></div>
+<ion-button class="perfil-btn" fill="clear" (click)="irPerfil()">
+  <div class="perfil-avatar"></div>
+</ion-button>
+<div class="home-content">
+  <div class="home-card">
+    <h1 class="welcome-title">¡Bienvenido a GameDeals!</h1>
+    <p class="welcome-text">Elige tu próxima jugada...</p>
+    <div class="button-row">
+      <ion-button (click)="filtrar('todos')">JUEGOS</ion-button>
+      <ion-button (click)="filtrar('favoritos')">FAVORITOS</ion-button>
+      <ion-button (click)="filtrar('alertas')">ALERTAS</ion-button>
+      <ion-button (click)="logout()">SALIR</ion-button>
+    </div>
+    <div class="games-list">
+      <div class="subtitle-juegos">Juegos en descuento </div>
+      <ion-list>
+        <ion-item *ngFor="let juego of juegos">
+          <ion-avatar slot="start">
+            <img [src]="juego.imagen" />
+          </ion-avatar>
+          <ion-label>
+            <h3>{{ juego.nombre }}</h3>
+            <p>{{ juego.descripcion }}</p>
+            <ng-container *ngIf="juego.descuento > 0; else sinDescuento">
+              <p>
+                <span class="precio-normal">{{ juego.precio | currency:'CLP':'symbol':'1.0-0':'es-CL' }}</span>
+                <span class="precio-oferta">
+                  {{
+                    (juego.precio - (juego.precio * juego.descuento/100)) | currency:'CLP':'symbol':'1.0-0':'es-CL'
+                  }}
+                </span>
+                <span class="descuento">-{{ juego.descuento }}%</span>
+              </p>
+            </ng-container>
+            <ng-template #sinDescuento>
+              <p>
+                <span class="precio-sin-descuento">{{ juego.precio | currency:'CLP':'symbol':'1.0-0':'es-CL' }}</span>
+              </p>
+            </ng-template>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
   </div>
-</ion-content>
+</div>
