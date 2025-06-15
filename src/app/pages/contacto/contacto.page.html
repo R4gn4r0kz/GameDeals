@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Contacto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="fondo-cascada ion-padding">
+  <div class="center-container">
+    <ion-segment [(ngModel)]="segmento" class="segmento-contacto ion-margin-bottom">
+      <ion-segment-button value="formulario">Formulario</ion-segment-button>
+      <ion-segment-button value="datos">Datos</ion-segment-button>
+      <ion-segment-button value="mapa">Mapa</ion-segment-button>
+    </ion-segment>
+    <ng-container [ngSwitch]="segmento">
+      <form *ngSwitchCase="'formulario'" (ngSubmit)="enviarFormulario()" class="formulario-contacto">
+        <ion-item>
+          <ion-label position="floating">Nombre</ion-label>
+          <ion-input [(ngModel)]="contacto.nombre" name="nombre" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input type="email" [(ngModel)]="contacto.email" name="email" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Mensaje</ion-label>
+          <ion-textarea [(ngModel)]="contacto.mensaje" name="mensaje" required></ion-textarea>
+        </ion-item>
+        <ion-button expand="block" type="submit" class="ion-margin-top">Enviar</ion-button>
+      </form>
+      <ion-card *ngSwitchCase="'datos'" class="datos-contacto">
+        <ion-card-header>
+          <ion-card-title>Datos de Contacto</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p><strong>Email:</strong> contacto&#64;tusitio.com</p>
+          <p><strong>Teléfono:</strong> +56 9 1234 5678</p>
+          <p><strong>Dirección:</strong> Av. Principal 123, Santiago</p>
+        </ion-card-content>
+      </ion-card>
+      <ion-card *ngSwitchCase="'mapa'" class="mapa-contacto">
+        <ion-card-header>
+          <ion-card-title>Ubicación</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p>Aquí puedes mostrar un mapa de Google Maps o un mensaje de “Disponible próximamente”.</p>
+        </ion-card-content>
+      </ion-card>
+    </ng-container>
+  </div>
+</ion-content>

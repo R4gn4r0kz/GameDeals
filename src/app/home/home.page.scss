@@ -1,0 +1,265 @@
+.home-bg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  z-index: 0;
+  background: url('/assets/login-bg.gif') no-repeat center center fixed;
+  background-size: cover;
+}
+.home-bg::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(20, 20, 40, 0.42);
+  backdrop-filter: blur(2px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Centrado absoluto como el login */
+.home-content {
+  position: relative;
+  min-height: 100vh;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Tarjeta principal tipo "glass" */
+.home-card {
+  background: rgba(24, 48, 96, 0.78);
+  border-radius: 24px;
+  box-shadow: 0 6px 24px #000a;
+  padding: 2.5rem 2.5rem 2rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 480px;
+  width: 96vw;
+  margin: 2vw;
+  backdrop-filter: blur(6px);
+  border: 1.5px solid rgba(32,227,178,0.15);
+  /* Para asegurar que los hijos no se desborden */
+  overflow: visible;
+  position: relative;
+}
+
+.welcome-title {
+  color: #25f0cb;
+  font-family: 'Share Tech Mono', monospace;
+  text-shadow: 0 2px 8px #000b;
+  margin-bottom: 0.5em;
+  margin-top: 0;
+  font-size: 2.2rem;
+  text-align: center;
+}
+.welcome-text {
+  color: #e0e0e0;
+  margin-bottom: 1.6rem;
+  text-align: center;
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  width: 100%;
+  /* Asegura que los botones no se salgan del card */
+  position: relative;
+  z-index: 2;
+}
+
+/* ====== NUEVO ESTILO SIN CAJAS/BORDES PARA LOS BOTONES ====== */
+.button-row ion-button {
+  --background: rgba(37, 240, 203, 0.14); /* fondo translúcido cian */
+  --color: #25f0cb;
+  --border-radius: 11px;
+  --box-shadow: 0 2px 12px 0 rgba(37, 240, 203, 0.08);
+  font-family: 'Share Tech Mono', monospace;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  font-size: 1.08rem;
+  min-width: 105px;
+  padding: 0 18px;
+  margin: 0;
+  transition: box-shadow 0.18s, transform 0.18s, background 0.18s, color 0.18s;
+  box-shadow: 0 2px 12px 0 rgba(37, 240, 203, 0.10);
+  /* border: 1.5px solid #25f0cb40;  <<-- QUITADO */
+  outline: none;
+  text-shadow: 0 2px 8px #000b;
+}
+
+.button-row ion-button:hover,
+.button-row ion-button:focus {
+  --background: #25f0cb;
+  --color: #16232d;
+  color: #16232d !important;
+  box-shadow: 0 6px 24px 0 rgba(37, 240, 203, 0.24);
+  transform: translateY(-2px) scale(1.04);
+}
+
+.button-row ion-button:active {
+  --background: #19bfa2;
+  --color: #16232d;
+  color: #16232d !important;
+  box-shadow: 0 2px 8px 0 rgba(37, 240, 203, 0.08);
+  transform: scale(0.97);
+}
+
+/* Botón 'SALIR' sin borde */
+.button-row ion-button:last-child {
+  --background: rgba(224, 76, 76, 0.13);
+  --color: #e04c4c;
+  /* border: 1.5px solid #e04c4c40;  <<-- QUITADO */
+  box-shadow: 0 2px 12px 0 rgba(224, 76, 76, 0.10);
+}
+.button-row ion-button:last-child:hover,
+.button-row ion-button:last-child:focus {
+  --background: #e04c4c;
+  --color: #fff;
+  color: #fff !important;
+  box-shadow: 0 6px 24px 0 rgba(224, 76, 76, 0.22);
+}
+.button-row ion-button:last-child:active {
+  --background: #ba3535;
+  --color: #fff;
+  color: #fff !important;
+  box-shadow: 0 2px 8px 0 rgba(224, 76, 76, 0.06);
+}
+
+/* Responsive: botones más pequeños en pantallas chicas */
+@media (max-width: 600px) {
+  .home-card { padding: 1.2rem 0.5rem; max-width: 98vw; }
+  .button-row ion-button {
+    font-size: 0.98rem;
+    min-width: 80px;
+    padding: 0 8px;
+  }
+}
+
+.games-list {
+  width: 100%;
+}
+
+/* Tarjeta de cada juego */
+ion-list {
+  background: none !important;
+  box-shadow: none;
+  margin: 0;
+  padding: 0;
+}
+
+ion-item {
+  --background: rgba(32, 227, 178, 0.11);
+  --border-radius: 16px;
+  color: #25f0cb;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.08rem;
+  margin: 10px 0;
+  border-radius: 16px !important;
+  transition: background 0.19s, color 0.19s;
+}
+ion-item:hover, ion-item:focus-within {
+  background: rgba(32, 227, 178, 0.21) !important;
+  color: #fff !important;
+  --color: #fff !important;
+}
+ion-avatar img {
+  border-radius: 50%;
+  box-shadow: 0 2px 8px #0004;
+  background: #161b22;
+}
+
+/* Precios CLP */
+.precio-normal {
+  text-decoration: line-through;
+  color: #f55c7a;
+  font-weight: bold;
+  margin-right: 0.5em;
+  font-size: 1.08em;
+  opacity: 0.82;
+}
+.precio-oferta {
+  color: #25f0cb;
+  font-weight: bold;
+  margin-right: 0.5em;
+  font-size: 1.13em;
+}
+.descuento {
+  background: #25f0cb;
+  color: #16232d;
+  border-radius: 6px;
+  padding: 2px 6px;
+  font-size: 0.95em;
+  margin-left: 0.2em;
+  font-weight: bold;
+}
+.precio-sin-descuento {
+  color: #25f0cb;
+  font-weight: bold;
+  font-size: 1.13em;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .home-card { padding: 1.2rem 0.5rem; max-width: 98vw; }
+}
+
+.subtitle-juegos {
+  color: #25f0cb;
+  font-family: 'Share Tech Mono', 'VT323', monospace, 'Arial';
+  text-align: center;
+  margin: 1.1rem 0 1.3rem 0;
+  font-size: 1.22rem;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 8px #0006;
+  font-weight: bold;
+}
+
+.perfil-btn {
+  position: fixed;
+  top: 22px;
+  right: 22px;
+  z-index: 10;
+  border-radius: 50%;
+  padding: 0;
+  width: 56px;
+  height: 56px;
+  box-shadow: 0 2px 18px 0 #ffe066cc;
+  background: none !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.perfil-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 3px solid #ffe066;
+  box-shadow: 0 0 16px 4px #ffe06677;
+  background-image: url('/src/assets/perfil.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: box-shadow 0.2s;
+}
+
+/* Opcional: brillo al pasar el mouse */
+.perfil-btn:hover .perfil-avatar,
+.perfil-btn:focus .perfil-avatar {
+  box-shadow: 0 0 32px 8px #ffe066cc, 0 0 0 4px #430089;
+}
+
+@keyframes perfil-glow {
+  0%, 100% { box-shadow: 0 0 8px 3px #ffe066cc; }
+  50% { box-shadow: 0 0 16px 6px #ffe066cc; }
+}
+.perfil-btn {
+  animation: perfil-glow 2s infinite alternate;
+}

@@ -1,0 +1,119 @@
+/* Fondo animado con GIF y overlay oscuro para resaltar el formulario */
+.login-bg {
+  --background: transparent !important;
+  background-image: url('/src/assets/login-bg.gif');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  min-width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  /* Elimina cualquier fondo heredado */
+}
+
+.login-bg {
+  --background: transparent !important;
+  background-image: url('/assets/login-bg.gif');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  min-width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+/* Overlay para oscurecer el fondo y resaltar el contenido */
+.login-bg::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(105, 92, 92, 0.35);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Centrado vertical y horizontal, más desplazado hacia abajo */
+.login-container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding-top: 120px; /* Más espacio arriba */
+}
+
+/* La caja del formulario y logo */
+.form-card {
+  background: rgba(207, 211, 219, 0.75); /* Azul gamer semitransparente */
+  border-radius: 18px;
+  box-shadow: 0 6px 24px rgba(247, 246, 246, 0.966);
+  padding: 40px 32px 32px 32px;
+  min-width: 320px;
+  max-width: 360px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  backdrop-filter: blur(2px);
+}
+
+.gamer-logo {
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  margin-bottom: 20px;
+  display: block;
+  background: transparent;
+  border-radius: 50%;      /* Esto hace que la imagen sea circular */
+  border: 3px solid #20e3b2; /* Opcional: un borde gamer que combina con el título */
+  box-shadow: 0 2px 12px #0008; /* Opcional: sombra para resaltar el logo */
+}
+
+/* Título */
+.gamer-title {
+  color: #20e3b2;
+  font-family: 'VT323', monospace, 'Arial';
+  font-size: 2rem;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px #000;
+  margin-bottom: 28px;
+}
+
+ion-item {
+  --background: rgba(24, 48, 96, 0.60); /* azul gamer translúcido */
+  --border-radius: 16px;                 /* esquinas bien redondeadas */
+  border-radius: 16px;                   /* para navegadores que no usan variables */
+  margin-bottom: 16px;
+  color: #fff;                           /* texto en blanco */
+  --color: #fff;                         /* forzar texto blanco en Ionic */
+  box-shadow: 0 2px 8px #0003;           /* suave sombra opcional */
+  border: none;
+}
+
+ion-button {
+  margin-top: 24px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+ion-label, ion-input {
+  color: #fff !important;                /* texto blanco dentro del input */
+}
+
+ion-list {
+  background: none !important;    /* ¡Sin fondo blanco en la lista! */
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
