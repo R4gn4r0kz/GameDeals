@@ -6,12 +6,23 @@
 
 <ion-content [fullscreen]="true" class="fondo-cascada ion-padding">
   <div class="center-container">
-    <ion-segment [(ngModel)]="segmento" class="segmento-contacto ion-margin-bottom">
+
+    <!-- Segmento de navegación -->
+    <ion-segment [(ngModel)]="segmento" class="segmento-contacto ion-margin-bottom" (ionChange)="onSegmentChanged($event)">
       <ion-segment-button value="formulario">Formulario</ion-segment-button>
       <ion-segment-button value="datos">Datos</ion-segment-button>
-      <ion-segment-button value="mapa">Mapa</ion-segment-button>
+      <ion-segment-button value="externos">Externos</ion-segment-button> <!-- ✅ Nuevo -->
     </ion-segment>
+
+    <!-- Botón de Salir -->
+    <ion-button expand="block" color="danger" (click)="volverHome()">
+      Salir
+    </ion-button>
+
+    <!-- Contenido según segmento -->
     <ng-container [ngSwitch]="segmento">
+
+      <!-- Formulario -->
       <form *ngSwitchCase="'formulario'" (ngSubmit)="enviarFormulario()" class="formulario-contacto">
         <ion-item>
           <ion-label position="floating">Nombre</ion-label>
@@ -27,6 +38,8 @@
         </ion-item>
         <ion-button expand="block" type="submit" class="ion-margin-top">Enviar</ion-button>
       </form>
+
+      <!-- Datos estáticos -->
       <ion-card *ngSwitchCase="'datos'" class="datos-contacto">
         <ion-card-header>
           <ion-card-title>Datos de Contacto</ion-card-title>
@@ -37,14 +50,17 @@
           <p><strong>Dirección:</strong> Av. Principal 123, Santiago</p>
         </ion-card-content>
       </ion-card>
-      <ion-card *ngSwitchCase="'mapa'" class="mapa-contacto">
-        <ion-card-header>
-          <ion-card-title>Ubicación</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          <p>Aquí puedes mostrar un mapa de Google Maps o un mensaje de “Disponible próximamente”.</p>
-        </ion-card-content>
-      </ion-card>
+
+      <!-- Mensajes externos desde API -->
+      <ion-list *ngSwitchCase="'externos'">
+        <ion-item *ngFor="let mensaje of apiMensajes">
+          <ion-label>
+            <h3>{{ mensaje.name }}</h3>
+            <p>{{ mensaje.body }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+
     </ng-container>
   </div>
 </ion-content>

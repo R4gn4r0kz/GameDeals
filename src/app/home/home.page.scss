@@ -17,7 +17,6 @@
   pointer-events: none;
 }
 
-/* Centrado absoluto como el login */
 .home-content {
   position: relative;
   min-height: 100vh;
@@ -28,7 +27,6 @@
   justify-content: center;
 }
 
-/* Tarjeta principal tipo "glass" */
 .home-card {
   background: rgba(24, 48, 96, 0.78);
   border-radius: 24px;
@@ -42,7 +40,6 @@
   margin: 2vw;
   backdrop-filter: blur(6px);
   border: 1.5px solid rgba(32,227,178,0.15);
-  /* Para asegurar que los hijos no se desborden */
   overflow: visible;
   position: relative;
 }
@@ -69,14 +66,12 @@
   justify-content: center;
   margin-bottom: 1.5rem;
   width: 100%;
-  /* Asegura que los botones no se salgan del card */
   position: relative;
   z-index: 2;
 }
 
-/* ====== NUEVO ESTILO SIN CAJAS/BORDES PARA LOS BOTONES ====== */
 .button-row ion-button {
-  --background: rgba(37, 240, 203, 0.14); /* fondo translúcido cian */
+  --background: rgba(37, 240, 203, 0.14);
   --color: #25f0cb;
   --border-radius: 11px;
   --box-shadow: 0 2px 12px 0 rgba(37, 240, 203, 0.08);
@@ -89,8 +84,6 @@
   margin: 0;
   transition: box-shadow 0.18s, transform 0.18s, background 0.18s, color 0.18s;
   box-shadow: 0 2px 12px 0 rgba(37, 240, 203, 0.10);
-  /* border: 1.5px solid #25f0cb40;  <<-- QUITADO */
-  outline: none;
   text-shadow: 0 2px 8px #000b;
 }
 
@@ -111,11 +104,9 @@
   transform: scale(0.97);
 }
 
-/* Botón 'SALIR' sin borde */
 .button-row ion-button:last-child {
   --background: rgba(224, 76, 76, 0.13);
   --color: #e04c4c;
-  /* border: 1.5px solid #e04c4c40;  <<-- QUITADO */
   box-shadow: 0 2px 12px 0 rgba(224, 76, 76, 0.10);
 }
 .button-row ion-button:last-child:hover,
@@ -132,21 +123,10 @@
   box-shadow: 0 2px 8px 0 rgba(224, 76, 76, 0.06);
 }
 
-/* Responsive: botones más pequeños en pantallas chicas */
-@media (max-width: 600px) {
-  .home-card { padding: 1.2rem 0.5rem; max-width: 98vw; }
-  .button-row ion-button {
-    font-size: 0.98rem;
-    min-width: 80px;
-    padding: 0 8px;
-  }
-}
-
 .games-list {
   width: 100%;
 }
 
-/* Tarjeta de cada juego */
 ion-list {
   background: none !important;
   box-shadow: none;
@@ -175,7 +155,6 @@ ion-avatar img {
   background: #161b22;
 }
 
-/* Precios CLP */
 .precio-normal {
   text-decoration: line-through;
   color: #f55c7a;
@@ -205,11 +184,6 @@ ion-avatar img {
   font-size: 1.13em;
 }
 
-/* Responsive */
-@media (max-width: 600px) {
-  .home-card { padding: 1.2rem 0.5rem; max-width: 98vw; }
-}
-
 .subtitle-juegos {
   color: #25f0cb;
   font-family: 'Share Tech Mono', 'VT323', monospace, 'Arial';
@@ -236,7 +210,6 @@ ion-avatar img {
   align-items: center;
   justify-content: center;
 }
-
 .perfil-avatar {
   width: 48px;
   height: 48px;
@@ -249,17 +222,64 @@ ion-avatar img {
   background-repeat: no-repeat;
   transition: box-shadow 0.2s;
 }
-
-/* Opcional: brillo al pasar el mouse */
 .perfil-btn:hover .perfil-avatar,
 .perfil-btn:focus .perfil-avatar {
   box-shadow: 0 0 32px 8px #ffe066cc, 0 0 0 4px #430089;
 }
-
 @keyframes perfil-glow {
   0%, 100% { box-shadow: 0 0 8px 3px #ffe066cc; }
   50% { box-shadow: 0 0 16px 6px #ffe066cc; }
 }
 .perfil-btn {
   animation: perfil-glow 2s infinite alternate;
+}
+
+.extras-fixed {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 9999;
+}
+
+.ubicacion-card-container {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: max-content;
+  z-index: 10000;
+}
+
+.extras-card {
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 8px;
+  color: white;
+  padding: 8px;
+}
+
+/* ✅ NUEVO: Botones 📸 y 📍 centrados abajo */
+.extras-bottom-center {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 16px;
+  z-index: 9999;
+}
+.extras-bottom-center ion-button {
+  --background: rgba(37, 240, 203, 0.14);
+  --color: #25f0cb;
+  --border-radius: 11px;
+  --box-shadow: 0 2px 12px rgba(37, 240, 203, 0.1);
+  font-family: 'Share Tech Mono', monospace;
+  font-weight: bold;
+  text-shadow: 0 2px 8px #000b;
+}
+.extras-bottom-center ion-button:hover {
+  --background: #25f0cb;
+  --color: #16232d;
+  box-shadow: 0 6px 24px rgba(37, 240, 203, 0.24);
 }

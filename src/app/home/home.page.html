@@ -1,21 +1,52 @@
 <div class="home-bg"></div>
+
+<!-- Botón de perfil -->
 <ion-button class="perfil-btn" fill="clear" (click)="irPerfil()">
   <div class="perfil-avatar"></div>
 </ion-button>
+
+<!-- Panel superior izquierdo con datos y foto -->
+<div class="extras-fixed">
+  <!-- Card de ubicación (cuando esté disponible) -->
+  <div class="ubicacion-card-container" *ngIf="ubicacion">
+    <ion-card class="extras-card">
+      <ion-card-header>
+        <ion-card-title>📍</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <small>Lat: {{ ubicacion.lat }}</small><br />
+        <small>Lon: {{ ubicacion.lon }}</small>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <!-- Imagen de la cámara -->
+  <div *ngIf="fotoBase64" class="foto-pequena">
+    <img [src]="fotoBase64" alt="Foto" />
+  </div>
+</div>
+
+<!-- Contenido principal -->
 <div class="home-content">
   <div class="home-card">
     <h1 class="welcome-title">¡Bienvenido a GameDeals!</h1>
     <p class="welcome-text">Elige tu próxima jugada...</p>
+
+    <!-- 🎮 Botones de acción con 📍 y 📸 integrados -->
     <div class="button-row">
       <ion-button (click)="filtrar('todos')">JUEGOS</ion-button>
       <ion-button (click)="filtrar('favoritos')">FAVORITOS</ion-button>
-      <ion-button (click)="filtrar('alertas')">ALERTAS</ion-button>
       <ion-button (click)="irContacto()">CONTACTO</ion-button>
-      <ion-button (click)="logout()">SALIR</ion-button>
+      <ion-button color="danger" (click)="logout()">SALIR</ion-button>
+      <ion-button fill="outline" color="primary" (click)="obtenerUbicacion()">📍</ion-button>
+      <ion-button fill="outline" color="secondary" (click)="tomarFoto()">📸</ion-button>
     </div>
+
+    <!-- 🕹️ Lista de juegos -->
     <div class="games-list">
-      <div class="subtitle-juegos">Juegos en descuento </div>
-      <ion-list>
+      <div class="subtitle-juegos">Juegos en descuento</div>
+
+      <ion-list *ngIf="juegos.length > 0; else sinJuegos">
         <ion-item *ngFor="let juego of juegos">
           <ion-avatar slot="start">
             <img [src]="juego.imagen" />
@@ -25,10 +56,12 @@
             <p>{{ juego.descripcion }}</p>
             <ng-container *ngIf="juego.descuento > 0; else sinDescuento">
               <p>
-                <span class="precio-normal">{{ juego.precio | currency:'CLP':'symbol':'1.0-0':'es-CL' }}</span>
+                <span class="precio-normal">
+                  {{ juego.precio | currency:'CLP':'symbol':'1.0-0':'es-CL' }}
+                </span>
                 <span class="precio-oferta">
                   {{
-                    (juego.precio - (juego.precio * juego.descuento/100)) | currency:'CLP':'symbol':'1.0-0':'es-CL'
+                    (juego.precio - (juego.precio * juego.descuento / 100)) | currency:'CLP':'symbol':'1.0-0':'es-CL'
                   }}
                 </span>
                 <span class="descuento">-{{ juego.descuento }}%</span>
@@ -36,12 +69,20 @@
             </ng-container>
             <ng-template #sinDescuento>
               <p>
-                <span class="precio-sin-descuento">{{ juego.precio | currency:'CLP':'symbol':'1.0-0':'es-CL' }}</span>
+                <span class="precio-sin-descuento">
+                  {{ juego.precio | currency:'CLP':'symbol':'1.0-0':'es-CL' }}
+                </span>
               </p>
             </ng-template>
           </ion-label>
         </ion-item>
       </ion-list>
+
+      <ng-template #sinJuegos>
+        <ion-text color="medium">
+          <p>No hay juegos disponibles.</p>
+        </ion-text>
+      </ng-template>
     </div>
   </div>
 </div>
