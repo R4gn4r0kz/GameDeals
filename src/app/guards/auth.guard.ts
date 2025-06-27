@@ -1,19 +1,16 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, Router } from '@angular/router';
-import { DBTaskService } from '../services/dbtask.service';
+import { CanActivateFn, Router } from '@angular/router';
+import { inject } from '@angular/core';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class AuthGuard implements CanActivate {
-  constructor(private db: DBTaskService, private router: Router) {}
+export const authGuard: CanActivateFn = () => {
+  const router = inject(Router);
 
-  async canActivate(): Promise<boolean> {
-    const hasSession = await this.db.hasActiveSession();
-    if (!hasSession) {
-      this.router.navigate(['/login']);
-      return false;
-    }
+  const isLoggedIn = localStorage.getItem('isLoggedIn');
+
+  if (isLoggedIn === 'true') {
     return true;
+  } else {
+    router.navigate(['/login']);
+    return false;
   }
-}
+};

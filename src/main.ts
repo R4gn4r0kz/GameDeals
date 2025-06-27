@@ -11,8 +11,6 @@ import localeEsCL from '@angular/common/locales/es-CL';
 import { SQLite } from '@awesome-cordova-plugins/sqlite/ngx';
 import { Storage } from '@ionic/storage-angular';
 import { provideHttpClient } from '@angular/common/http';
-import { Geolocation } from '@ionic-native/geolocation/ngx';
-
 
 registerLocaleData(localeEsCL, 'es-CL');
 
@@ -25,7 +23,6 @@ bootstrapApplication(AppComponent, {
     provideHttpClient(),
     SQLite,
     Storage,
-    Geolocation,
-
+    // Geolocation eliminado ✅
   ],
 });

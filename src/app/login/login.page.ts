@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, ToastController } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -14,7 +14,11 @@ import { CommonModule } from '@angular/common';
 export class LoginPage {
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private toastCtrl: ToastController
+  ) {
     this.loginForm = this.fb.group({
       username: [
         '',
@@ -37,9 +41,28 @@ export class LoginPage {
     });
   }
 
-  onLogin() {
+  async onLogin() {
     if (this.loginForm.valid) {
-      this.router.navigate(['/info-adicional']);
+      // Guardar estado de sesión
+      localStorage.setItem('isLoggedIn', 'true');
+
+      // Redirigir al home
+      await this.router.navigate(['/home']);
+
+      // (Opcional) Mostrar un mensaje de bienvenida
+      const toast = await this.toastCtrl.create({
+        message: `Bienvenido, ${this.loginForm.value.username}!`,
+        duration: 2000,
+        color: 'success'
+      });
+      toast.present();
+    } else {
+      const toast = await this.toastCtrl.create({
+        message: 'Formulario inválido. Verifica los campos.',
+        duration: 2000,
+        color: 'danger'
+      });
+      toast.present();
     }
   }
 }

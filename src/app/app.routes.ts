@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
   {
@@ -18,8 +19,8 @@ export const routes: Routes = [
   },
   {
     path: 'home',
-    loadComponent: () =>
-      import('./home/home.page').then((m) => m.HomePage),
+    loadComponent: () => import('./home/home.page').then(m => m.HomePage),
+    canActivate: [authGuard]  // 🔐 protegida
   },
   {
     path: 'registro',
@@ -33,6 +34,8 @@ export const routes: Routes = [
     path: 'contacto',
     loadComponent: () => import('./pages/contacto/contacto.page').then(m => m.ContactoPage)
   },
+
+
   {
     path: 'not-found',
     loadComponent: () => import('./pages/not-found/not-found.page').then(m => m.NotFoundPage)
@@ -41,5 +44,11 @@ export const routes: Routes = [
   {
     path: '**',
     redirectTo: 'not-found'
-  }
+  },
+
+
+
+
+
+
 ];

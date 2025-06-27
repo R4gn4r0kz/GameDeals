@@ -1,3 +1,4 @@
+<!-- Fondo decorativo -->
 <div class="home-bg"></div>
 
 <!-- Botón de perfil -->
@@ -5,25 +6,9 @@
   <div class="perfil-avatar"></div>
 </ion-button>
 
-<!-- Panel superior izquierdo con datos y foto -->
-<div class="extras-fixed">
-  <!-- Card de ubicación (cuando esté disponible) -->
-  <div class="ubicacion-card-container" *ngIf="ubicacion">
-    <ion-card class="extras-card">
-      <ion-card-header>
-        <ion-card-title>📍</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <small>Lat: {{ ubicacion.lat }}</small><br />
-        <small>Lon: {{ ubicacion.lon }}</small>
-      </ion-card-content>
-    </ion-card>
-  </div>
-
-  <!-- Imagen de la cámara -->
-  <div *ngIf="fotoBase64" class="foto-pequena">
-    <img [src]="fotoBase64" alt="Foto" />
-  </div>
+<!-- Imagen de la cámara -->
+<div *ngIf="fotoBase64" class="foto-pequena">
+  <img [src]="fotoBase64" alt="Foto" />
 </div>
 
 <!-- Contenido principal -->
@@ -32,14 +17,19 @@
     <h1 class="welcome-title">¡Bienvenido a GameDeals!</h1>
     <p class="welcome-text">Elige tu próxima jugada...</p>
 
-    <!-- 🎮 Botones de acción con 📍 y 📸 integrados -->
+    <!-- 🎮 Botones de acción -->
     <div class="button-row">
-      <ion-button (click)="filtrar('todos')">JUEGOS</ion-button>
-      <ion-button (click)="filtrar('favoritos')">FAVORITOS</ion-button>
       <ion-button (click)="irContacto()">CONTACTO</ion-button>
+      <ion-button (click)="irMapa()">MAPA</ion-button> <!-- ✅ NUEVO -->
       <ion-button color="danger" (click)="logout()">SALIR</ion-button>
-      <ion-button fill="outline" color="primary" (click)="obtenerUbicacion()">📍</ion-button>
       <ion-button fill="outline" color="secondary" (click)="tomarFoto()">📸</ion-button>
+    </div>
+
+    <!-- ✅ Botón de reinicio de juegos -->
+    <div class="button-row">
+      <ion-button color="medium" expand="block" (click)="reiniciarJuegos()">
+        Reiniciar Juegos
+      </ion-button>
     </div>
 
     <!-- 🕹️ Lista de juegos -->
