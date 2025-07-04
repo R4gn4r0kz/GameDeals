@@ -1,0 +1,33 @@
+<ion-content class="perfil-bg">
+  <div class="perfil-card">
+<div class="avatar-container">
+  <ion-avatar>
+    <img src="assets/perfil.jpg" alt="Avatar usuario gamer" />
+  </ion-avatar>
+  <h2>{{ perfilForm.value.nickname || 'Tu Nickname' }}</h2>
+</div>
+    <form [formGroup]="perfilForm">
+      <ion-item>
+        <ion-label position="floating">Nombre</ion-label>
+        <ion-input formControlName="nombre"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Apellido</ion-label>
+        <ion-input formControlName="apellido"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input formControlName="email" type="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Nickname</ion-label>
+        <ion-input formControlName="nickname"></ion-input>
+      </ion-item>
+      <!-- Si quieres permitir cambiar avatar, puedes agregar input de archivo aquí -->
+      <div class="perfil-actions">
+        <ion-button expand="block" (click)="guardarCambios()">Guardar</ion-button>
+        <ion-button expand="block" fill="outline" color="medium" (click)="volverHome()">Volver a Home</ion-button>
+      </div>
+    </form>
+  </div>
+</ion-content>

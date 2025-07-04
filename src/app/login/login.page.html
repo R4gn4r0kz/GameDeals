@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>
+      <ion-icon name="game-controller-outline" slot="start"></ion-icon>
+      GameDeals
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="login-bg">
+  <div class="login-container">
+    <img src="assets/gamer-logo.png" alt="" class="gamer-logo"/>
+    <h2 class="gamer-title">¡Bienvenido, gamer!</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <ion-list>
+        <ion-item>
+          <ion-label position="floating">Usuario</ion-label>
+          <ion-input formControlName="username"></ion-input>
+        </ion-item>
+        <ion-text color="danger" *ngIf="loginForm.get('username')?.hasError('required') && loginForm.get('username')?.touched">
+          El usuario es obligatorio.
+        </ion-text>
+        <ion-text color="danger" *ngIf="loginForm.get('username')?.hasError('minlength') && loginForm.get('username')?.touched">
+          Mínimo 4 caracteres.
+        </ion-text>
+        <ion-text color="danger" *ngIf="loginForm.get('username')?.hasError('maxlength') && loginForm.get('username')?.touched">
+          Máximo 20 caracteres.
+        </ion-text>
+        <ion-text color="danger" *ngIf="loginForm.get('username')?.hasError('pattern') && loginForm.get('username')?.touched">
+          Solo letras y números.
+        </ion-text>
+
+        <ion-item>
+          <ion-label position="floating">Contraseña</ion-label>
+          <ion-input type="password" formControlName="password"></ion-input>
+        </ion-item>
+        <ion-text color="danger" *ngIf="loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched">
+          La contraseña es obligatoria.
+        </ion-text>
+        <ion-text color="danger" *ngIf="loginForm.get('password')?.hasError('minlength') && loginForm.get('password')?.touched">
+          Mínimo 6 caracteres.
+        </ion-text>
+        <ion-text color="danger" *ngIf="loginForm.get('password')?.hasError('maxlength') && loginForm.get('password')?.touched">
+          Máximo 30 caracteres.
+        </ion-text>
+        <ion-text color="danger" *ngIf="loginForm.get('password')?.hasError('pattern') && loginForm.get('password')?.touched">
+          Debe contener al menos una letra y un número.
+        </ion-text>
+      </ion-list>
+      <ion-button expand="block" type="submit" [disabled]="loginForm.invalid" color="primary">
+        <ion-icon name="log-in-outline" slot="start"></ion-icon>
+        ¡Entrar a la partida!
+      </ion-button>
+    </form>
+  </div>
+</ion-content>

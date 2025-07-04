@@ -1,0 +1,46 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "title": "Hola Mundo",
+      "body": "Contenido de prueba"
+    }
+  ],
+  "comentarios": [
+    {
+      "id": "1",
+      "nombre": "Diego",
+      "mensaje": "Hola desde la app"
+    },
+    {
+      "id": "42b0",
+      "nombre": "Diego",
+      "mensaje": "hola"
+    },
+    {
+      "id": "b418",
+      "nombre": "Juan",
+      "mensaje": "Hola, buenas noches"
+    },
+    {
+      "id": "27f1",
+      "nombre": "Esteban",
+      "mensaje": "Hola,  buenas noches desde la  app"
+    }
+  ],
+  "juegos": [
+    {
+      "id": "1",
+      "nombre": "Hades",
+      "precio": 13000,
+      "favorito": true
+    }
+  ],
+  "usuarios": [
+    {
+      "id": "1",
+      "nombre": "Ana",
+      "email": "ana@email.com"
+    }
+  ]
+}
