@@ -1,0 +1,5 @@
+{
+  "error": "no such element",
+  "message": "no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"ion-title\"}\n  (Session info: chrome=138.0.7204.97)",
+  "stacktrace": "\tGetHandleVerifier [0x0x7ff65ee26f25+76917]\n\tGetHandleVerifier [0x0x7ff65ee26f80+77008]\n\t(No symbol) [0x0x7ff65ebd9dea]\n\t(No symbol) [0x0x7ff65ec30256]\n\t(No symbol) [0x0x7ff65ec3050c]\n\t(No symbol) [0x0x7ff65ec83887]\n\t(No symbol) [0x0x7ff65ec584af]\n\t(No symbol) [0x0x7ff65ec8065c]\n\t(No symbol) [0x0x7ff65ec58243]\n\t(No symbol) [0x0x7ff65ec21431]\n\t(No symbol) [0x0x7ff65ec221c3]\n\tGetHandleVerifier [0x0x7ff65f0fd24d+3051421]\n\tGetHandleVerifier [0x0x7ff65f0f78a3+3028467]\n\tGetHandleVerifier [0x0x7ff65f11583d+3151245]\n\tGetHandleVerifier [0x0x7ff65ee417ee+185662]\n\tGetHandleVerifier [0x0x7ff65ee496af+218111]\n\tGetHandleVerifier [0x0x7ff65ee2faa4+112628]\n\tGetHandleVerifier [0x0x7ff65ee2fc59+113065]\n\tGetHandleVerifier [0x0x7ff65ee16c28+10616]\n\tBaseThreadInitThunk [0x0x7ffc46477374+20]\n\tRtlUserThreadStart [0x0x7ffc476fcc91+33]\n"
+}

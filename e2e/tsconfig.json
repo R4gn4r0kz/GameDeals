@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "outDir": "../dist/out-tsc-e2e",
+    "sourceMap": true,
+    "types": ["jasmine", "node"]
+  }
+}
