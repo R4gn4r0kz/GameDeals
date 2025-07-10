@@ -46,6 +46,12 @@
       "id": "1",
       "nombre": "Ana",
       "email": "ana@email.com"
+    },
+    {
+      "id": "fcfe",
+      "usuario": "Diego",
+      "email": "Omega@gmail.com",
+      "password": "Omega23"
     }
   ]
 }
